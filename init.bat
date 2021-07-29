@@ -22,6 +22,9 @@ set /p version="What is its version number ? "
 
 :: Creating .scss and .js files
 
+echo.
+echo Creating js and scss files in src/js and src/scss subdirectory
+mkdir src && mkdir src\js && mkdir src\scss
 echo OFF
 echo * { box-sizing: border-box }>%CD%\src\scss\%component%.scss
 (
@@ -33,10 +36,12 @@ echo * { box-sizing: border-box }>%CD%\src\scss\%component%.scss
 	echo.
 	echo export default %component%;
 )>%CD%\src\js\%component%.js
+echo Source files successfully created
 
 :: Replacing strings in files to properly prepare the folder
 
 echo.
+echo Fill configuration files with the information you provided
 echo Replacing in demo/example.html
 call :replaceInFile demo\example.html COMPONENT %component%
 call :replaceInFile demo\example.html VERSION %version%
@@ -54,6 +59,7 @@ echo Replacing in package.json
 call :replaceInFile package.json USERNAME %username%
 call :replaceInFile package.json COMPONENT %component%
 call :replaceInFile package.json VERSION %version%
+echo Configuration files are up and ready
 
 :: Using npm install if any, display error otherwise
 
@@ -64,8 +70,16 @@ if %installed% == no (
 	exit /B -1
 )
 
+echo.
 echo Running npm install to finalize component installation
 rem npm install
+
+:: Clearing both .bat and .sh files
+echo This script will now self-destruct to let you a properly set up dev environment
+del init.sh
+(goto) 2>nul & del "%~f0"
+
+echo.
 
 exit /B %ERRORLEVEL%
 
