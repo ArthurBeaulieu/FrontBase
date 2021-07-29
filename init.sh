@@ -39,19 +39,19 @@ touch "$basedir"/src/scss/"$component".scss
 } >> "$basedir"/src/scss/"$component".scss
 touch "$basedir"/src/js/"$component".js
 {
-	echo "import '../scss/$component.scss"
+	echo "import '../scss/${component}.scss"
 	echo ""
-	echo "class $component {"
+	echo "class ${component} {"
 	echo "  constructor() {}"
 	echo "}"
 	echo ""
-	echo "export default $component"
+	echo "export default ${component}"
 } >> "$basedir"/src/js/"$component".js
 touch "$basedir"/test/"$component".spec.js
 {
-	echo "import '../src/js/$component.js';"
+	echo "import '../src/js/${component}.js';"
 	echo ""
-	echo "describe('$component test', () => {"
+	echo "describe('${component} test', () => {"
 	echo "  it('Unit test', done => {"
 	echo "    done();"
 	echo "  });"
