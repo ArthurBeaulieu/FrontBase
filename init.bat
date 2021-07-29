@@ -72,9 +72,10 @@ if %installed% == no (
 
 echo.
 echo Running npm install to finalize component installation
-rem npm install
+npm install
 
 :: Clearing both .bat and .sh files
+echo.
 echo This script will now self-destruct to let you a properly set up dev environment
 del init.sh
 (goto) 2>nul & del "%~f0"
