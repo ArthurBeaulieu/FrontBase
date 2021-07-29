@@ -1,7 +1,7 @@
 {
   "name": "COMPONENT",
-  "version": "VERSION",
-  "description": "",
+  "version": "PROJECT_VERSION",
+  "description": "DESCRIPTION",
   "keywords": [],
   "main": "src/js/COMPONENT.js",
   "scripts": {
@@ -22,7 +22,7 @@
     "url": "https://github.com/USERNAME/COMPONENT/issues"
   },
   "author": "USERNAME",
-  "license": "GPL-3.0",
+  "license": "PROJECT_LICENSE",
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
