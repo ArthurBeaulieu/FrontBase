@@ -59,6 +59,7 @@ echo.
 echo Fill configuration files with the information you provided
 echo  -^> Replacing in demo/example.html
 call :replaceInFile demo\example.html COMPONENT %component%
+call :replaceInFile demo\example.html DESCRIPTION %description%
 call :replaceInFile demo\example.html VERSION %version%
 echo  -^> Replacing in doc/jsDoc.json
 call :replaceInFile doc/jsDoc.json COMPONENT %component%
@@ -126,6 +127,26 @@ echo OFF
 	echo ![Test]^(https://badgen.net/badge/test/TODO/orange^)
 	echo.
 	echo %description%
+	echo.
+	echo [See it live](https://%username%.github.io/%component%/demo/example.html) or [Read the documentation](https://%username%.github.io/%component%/doc/index.html)
+	echo.
+	echo # Usage
+	echo.
+  echo If you need more information on those components methods and internals, you can read the online [documentation](https://%username%.github.io/%component%/doc/).
+	echo.
+	echo # Development
+	echo.
+	echo If you clone this repository, you can `npm install` to install development dependencies. This will allow you to build dist file, run the component tests or generate the documentation ;
+	echo.
+  echo - `npm run build` to generate the minified file ;
+  echo - `npm run watch` to watch for any change in source code ;
+  echo - `npm run server` to launch a local development server ;
+  echo - `npm run test` to perform tests ;
+  echo - `npm run test-dev` to debug tests ;
+  echo - `npm run doc` to generate documentation ;
+  echo - `npm run beforecommit` to perform tests, generate doc and bundle the source files.
+	echo.
+  echo To avoid CORS when locally loading the example HTML file, run the web server. Please do not use it on a production environment. Unit tests are performed on both Firefox and Chrome ; ensure you have both installed before running tests, otherwise they might fail.
 	echo.
 	echo %component% %version% - %license% - %username%
 )>%CD%\README.md
