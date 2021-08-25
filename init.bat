@@ -1,4 +1,4 @@
-@set vers=0.1.0
+@set vers=1.0.0
 
 :: Script welcome message and explanation
 

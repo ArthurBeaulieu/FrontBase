@@ -1,5 +1,5 @@
 #! /bin/bash
-vers="0.1.0"
+vers="1.0.0"
 
 # Script welcome message and explanation
 
@@ -14,6 +14,12 @@ echo -e This installer will update the configuration files to match your newly c
 echo -e It will also create for you the es6 JavaScript class and the scss file.
 echo -e First, we need several information about it :
 echo
+
+username=''
+component=''
+description=''
+version=''
+license=''
 
 # Ask user mandatory information
 
@@ -39,13 +45,13 @@ touch "$basedir"/src/scss/"$component".scss
 } >> "$basedir"/src/scss/"$component".scss
 touch "$basedir"/src/js/"$component".js
 {
-	echo "import '../scss/${component}.scss"
+	echo "import '../scss/${component}.scss';"
 	echo ""
 	echo "class ${component} {"
 	echo "  constructor() {}"
 	echo "}"
 	echo ""
-	echo "export default ${component}"
+	echo "export default ${component};"
 } >> "$basedir"/src/js/"$component".js
 touch "$basedir"/test/"$component".spec.js
 {
@@ -64,33 +70,56 @@ echo -e "Source files successfully created"
 echo
 echo -e "Fill configuration files with the information you provided"
 echo -e " -> Replacing in demo/example.html"
-# TODO
+sed -i "s/COMPONENT/$component/" demo/example.html
+sed -i "s/VERSION/$version/" demo/example.html
 echo -e " -> Replacing in doc/jsDoc.json"
-# TODO
+sed -i "s/COMPONENT/$component/" doc/jsDoc.json
 echo -e " -> Replacing in webpack/plugins.js"
-# TODO
+sed -i "s/COMPONENT/$component/" webpack/plugins.js
 echo -e " -> Replacing in webpack/webpack.common.js"
-# TODO
+sed -i "s/COMPONENT/$component/g" webpack/webpack.common.js
 echo -e " -> Replacing in package.json"
-# TODO
+sed -i "s/USERNAME/$username/" package.json
+sed -i "s/COMPONENT/$component/" package.json
+sed -i "s/DESCRIPTION/$description/" package.json
+sed -i "s/PROJECT_VERSION/$version/" package.json
+sed -i "s/PROJECT_LICENSE/$license/" package.json
 echo -e "Configuration files are up and ready"
 
 # Clear README.md and prepare it with user information
 
 echo
 echo -e "Editing README.md to match project information"
-# TODO
+> README.md
+echo "# $component
+
+![](https://badgen.net/badge/version/$license/blue)
+![License](https://img.shields.io/github/license/$username/$component.svg)
+![Doc](https://badgen.net/badge/documentation/TODO/orange)
+![Test](https://badgen.net/badge/test/TODO/orange)
+
+$description
+
+$component $version - $license - $username" >> README.md
 echo -e "README.md file now reflect the new project"
 
 # Using npm install if any, display error otherwise
 
 echo
-# TODO
+if ! command -v node -v &> /dev/null
+then
+  echo "npm is not installed on the system. Please manually install it and run npm install to complete installation."
+  exit
+fi
+
 echo -e "Running npm install to install component dependencies"
-# TODO
+npm install
+npm npm run build
 
 # Clearing both .bat and .sh files
 
 echo
 echo -e "This script will now self-destruct to let you a properly use this dev environment"
 echo -e "You can now start to develop. See package.json scripts commands for usage"
+rm -f init.bat
+rm -- "$0"
