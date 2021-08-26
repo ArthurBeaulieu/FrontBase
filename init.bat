@@ -64,7 +64,6 @@ call :replaceInFile demo\example.html VERSION %version%
 echo  -^> Replacing in doc/jsDoc.json
 call :replaceInFile doc/jsDoc.json COMPONENT %component%
 echo  -^> Replacing in webpack/plugins.js
-call :replaceInFile webpack/plugins.js COMPONENT %component%
 echo  -^> Replacing in webpack/webpack.common.js
 call :replaceInFile webpack/webpack.common.js COMPONENT %component%
 echo  -^> Replacing in package.json
@@ -128,13 +127,13 @@ echo OFF
 	echo.
 	echo %description%
 	echo.
-	echo [See it live](https://%username%.github.io/%component%/demo/example.html) or [Read the documentation](https://%username%.github.io/%component%/doc/index.html)
+	echo [See it live]^(https://%username%.github.io/%component%/demo/example.html^) or [Read the documentation]^(https://%username%.github.io/%component%/doc/index.html^)
 	echo.
-	echo # Usage
+	echo ^# Usage
 	echo.
-  echo If you need more information on those components methods and internals, you can read the online [documentation](https://%username%.github.io/%component%/doc/).
+  echo If you need more information on those components methods and internals, you can read the online [documentation]^(https://%username%.github.io/%component%/doc/^).
 	echo.
-	echo # Development
+	echo ^# Development
 	echo.
 	echo If you clone this repository, you can `npm install` to install development dependencies. This will allow you to build dist file, run the component tests or generate the documentation ;
 	echo.
