@@ -1,11 +1,11 @@
-@set vers=1.0.0
+@set vers=1.1.0
 
 :: Script welcome message and explanation
 
 echo OFF
 echo ## ---------------------------------- ##
 echo ##        FrontBase installer         ##
-echo ##          2021 -- GPL-3.0           ##
+echo ##          2022 -- GPL-3.0           ##
 echo ##              v%vers%                ##
 echo ## ---------------------------------- ##
 echo.
@@ -64,7 +64,7 @@ call :replaceInFile demo\example.html VERSION %version%
 echo  -^> Replacing in doc/jsDoc.json
 call :replaceInFile doc/jsDoc.json COMPONENT %component%
 echo  -^> Replacing in webpack/plugins.js
-call :replaceInFile webpack/webpack/plugins.js COMPONENT %component%
+call :replaceInFile webpack/plugins.js COMPONENT %component%
 echo  -^> Replacing in webpack/webpack.common.js
 call :replaceInFile webpack/webpack.common.js COMPONENT %component%
 echo  -^> Replacing in package.json

@@ -1,12 +1,12 @@
 #! /bin/bash
-vers="1.0.0"
+vers="1.1.0"
 
 # Script welcome message and explanation
 
 echo
 echo -e "  ## ---------------------------------- ##"
 echo -e "  ##        FrontBase installer         ##"
-echo -e "  ##          2021 -- GPL-3.0           ##"
+echo -e "  ##          2022 -- GPL-3.0           ##"
 echo -e "  ##              v$vers                ##"
 echo -e "  ## ---------------------------------- ##"
 echo
@@ -41,27 +41,27 @@ mkdir -p src/scss
 echo -e " -> Creating source files"
 touch "$basedir"/src/scss/"$component".scss
 {
-	echo "* { box-sizing: border-box }"
+  echo "* { box-sizing: border-box }"
 } >> "$basedir"/src/scss/"$component".scss
 touch "$basedir"/src/js/"$component".js
 {
-	echo "import '../scss/${component}.scss';"
-	echo ""
-	echo "class ${component} {"
-	echo "  constructor() {}"
-	echo "}"
-	echo ""
-	echo "export default ${component};"
+  echo "import '../scss/${component}.scss';"
+  echo ""
+  echo "class ${component} {"
+  echo "  constructor() {}"
+  echo "}"
+  echo ""
+  echo "export default ${component};"
 } >> "$basedir"/src/js/"$component".js
 touch "$basedir"/test/"$component".spec.js
 {
-	echo "import '../src/js/${component}.js';"
-	echo ""
-	echo "describe('${component} test', () => {"
-	echo "  it('Unit test', done => {"
-	echo "    done();"
-	echo "  });"
-	echo "});"
+  echo "import '../src/js/${component}.js';"
+  echo ""
+  echo "describe('${component} test', () => {"
+  echo "  it('Unit test', done => {"
+  echo "    done();"
+  echo "  });"
+  echo "});"
 } >> "$basedir"/test/"$component".spec.js
 echo -e "Source files successfully created"
 
