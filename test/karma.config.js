@@ -1,5 +1,3 @@
-'use strict';
-
 const webpack = require('webpack');
 const loaders = require('../webpack/loaders');
 const plugins = require('../webpack/plugins');
@@ -8,7 +6,7 @@ module.exports = config => {
   config.set({
     basePath: '../',
     singleRun: !config.dev, // Keep browser open in dev mode
-    browsers: ['Firefox'], // TODO optionnaly launch browsers
+    browsers: ['Firefox'],
     frameworks: ['jasmine'],
     client: {
       jasmine: {

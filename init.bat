@@ -34,22 +34,22 @@ echo  -^> Creating source files
 echo OFF
 echo * { box-sizing: border-box }>%CD%\src\scss\%component%.scss
 (
-	echo import '../scss/%component%.scss';
-	echo.
-	echo class %component% {
-	echo   constructor^(^) {}
-	echo }
-	echo.
-	echo export default %component%;
+  echo import '../scss/%component%.scss';
+  echo.
+  echo class %component% {
+  echo   constructor^(^) {}
+  echo }
+  echo.
+  echo export default %component%;
 )>%CD%\src\js\%component%.js
 (
-	echo import '../src/js/%component%.js';
-	echo.
-	echo describe^('%component% test', ^(^) =^> {
-	echo   it^('Unit test', done =^> {
-	echo     done^(^);
-	echo   }^);
-	echo }^);
+  echo import '../src/js/%component%.js';
+  echo.
+  echo describe^('%component% test', ^(^) =^> {
+  echo   it^('Unit test', done =^> {
+  echo     done^(^);
+  echo   }^);
+  echo }^);
 )>%CD%\test\%component%.spec.js
 echo Source files successfully created
 
@@ -64,7 +64,7 @@ call :replaceInFile demo\example.html VERSION %version%
 echo  -^> Replacing in doc/jsDoc.json
 call :replaceInFile doc/jsDoc.json COMPONENT %component%
 echo  -^> Replacing in webpack/plugins.js
-call :replaceInFile webpack/webpack.plugins.js COMPONENT %component%
+call :replaceInFile webpack/webpack/plugins.js COMPONENT %component%
 echo  -^> Replacing in webpack/webpack.common.js
 call :replaceInFile webpack/webpack.common.js COMPONENT %component%
 echo  -^> Replacing in package.json
@@ -89,7 +89,7 @@ set installed=
 call :isNpmInstalled installed
 if %installed% == no (
   echo npm is not installed on the system. Please manually install it and run npm install to complete installation.
-	exit /B -1
+  exit /B -1
 )
 
 echo Running npm install to install component dependencies
@@ -119,25 +119,25 @@ goto :eof
 break>README.md
 echo OFF
 (
-	echo ^# %component%
-	echo.
-	echo ![]^(https://badgen.net/badge/version/%license%/blue^)
-	echo ![License]^(https://img.shields.io/github/license/%username%/%component%.svg^)
-	echo ![Doc]^(https://badgen.net/badge/documentation/TODO/orange^)
-	echo ![Test]^(https://badgen.net/badge/test/TODO/orange^)
-	echo.
-	echo %description%
-	echo.
-	echo [See it live]^(https://%username%.github.io/%component%/demo/example.html^) or [Read the documentation]^(https://%username%.github.io/%component%/doc/index.html^)
-	echo.
-	echo ^# Usage
-	echo.
+  echo ^# %component%
+  echo.
+  echo ![]^(https://badgen.net/badge/version/%license%/blue^)
+  echo ![License]^(https://img.shields.io/github/license/%username%/%component%.svg^)
+  echo ![Doc]^(https://badgen.net/badge/documentation/TODO/orange^)
+  echo ![Test]^(https://badgen.net/badge/test/TODO/orange^)
+  echo.
+  echo %description%
+  echo.
+  echo [See it live]^(https://%username%.github.io/%component%/demo/example.html^) or [Read the documentation]^(https://%username%.github.io/%component%/doc/index.html^)
+  echo.
+  echo ^# Usage
+  echo.
   echo If you need more information on those components methods and internals, you can read the online [documentation]^(https://%username%.github.io/%component%/doc/^).
-	echo.
-	echo ^# Development
-	echo.
-	echo If you clone this repository, you can `npm install` to install development dependencies. This will allow you to build dist file, run the component tests or generate the documentation ;
-	echo.
+  echo.
+  echo ^# Development
+  echo.
+  echo If you clone this repository, you can `npm install` to install development dependencies. This will allow you to build dist file, run the component tests or generate the documentation ;
+  echo.
   echo - `npm run build` to generate the minified file ;
   echo - `npm run watch` to watch for any change in source code ;
   echo - `npm run server` to launch a local development server ;
@@ -145,10 +145,10 @@ echo OFF
   echo - `npm run test-dev` to debug tests ;
   echo - `npm run doc` to generate documentation ;
   echo - `npm run beforecommit` to perform tests, generate doc and bundle the source files.
-	echo.
+  echo.
   echo To avoid CORS when locally loading the example HTML file, run the web server. Please do not use it on a production environment. Unit tests are performed on both Firefox and Chrome ; ensure you have both installed before running tests, otherwise they might fail.
-	echo.
-	echo %component% %version% - %license% - %username%
+  echo.
+  echo %component% %version% - %license% - %username%
 )>%CD%\README.md
 goto :eof
 
